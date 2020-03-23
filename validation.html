@@ -1,0 +1,142 @@
+<!-- form validation using regular expression in javascript with html and css-->
+<html>
+	<head>
+		<title>validation in javascript</title>
+		<style>
+			.c1{
+				border-radius: 10px;
+				height: 7%;
+				width: 45%;
+			}
+			.c2{
+				color:red;
+				display:none;
+			}
+			.c3{
+				height: 90%;
+				width: 50%;
+				margin-left: 30%;
+			}
+		</style>
+	</head>
+	<body >
+	<div class="c3">
+	<h2>Form validation using javascript and Regular expression</h2>
+	<label>username:- </label><br><input type="text" id="p1"  class="c1" onchange="validate()" required placeholder="Enter Username" /><br>
+	<span class="c2" id="msg1">&#10060 invalid username should be greater than 5 and alphanumeric </span>
+	<span class="c2" id="msg2">&#10060 This field is required</span><br>
+	<label>email validation:- </label><br><input type="email" id="p2"  class="c1" onchange="validate()" required placeholder="Enter email" /><br>
+	<span class="c2" id="msg3">&#10060 invalid email address</span>
+	<span class="c2" id="msg4">&#10060 This field is required</span><br>
+	<label>Mobile number:- </label><br><input type="text" id="p3"  class="c1" onchange="validate()" required placeholder="Enter Mobile no" /><br>
+	<span class="c2" id="msg5">&#10060 invalid mobile number</span>
+	<span class="c2" id="msg6">&#10060 This field is required</span><br>
+	<label>password:- </label><br><input type="password" id="p4"  class="c1" onchange="validate()" required placeholder="Enter password" /><br>
+	<span class="c2" id="msg7">&#10060 invalid password atleast one alphabet(capital and small),digit <br>and special character and more than 8 length</span>
+	<span class="c2" id="msg8">&#10060 This field is required</span><br>
+	<label>confirm password:- </label><br><input type="password" id="p5"  class="c1" onchange="validate()" required placeholder="Enter password" /><br>
+	<span class="c2" id="msg9">&#10060 password not matching</span>
+	<span class="c2" id="msg10">&#10060 This field is required</span><br><br>
+	<input type="button" onclick="validate()" value="Register" />
+	</div>
+	<script>
+		function validate()
+		{
+			var x = document.getElementById("p1");
+			var y = document.getElementById("p2");
+			var z = document.getElementById("p3");
+			var ps1 = document.getElementById("p4");
+			var ps2 = document.getElementById("p5");
+			var m1 = document.getElementById("msg1");
+			var m2 = document.getElementById("msg2");
+			var m3 = document.getElementById("msg3");
+			var m4 = document.getElementById("msg4");
+			var m5 = document.getElementById("msg5");
+			var m6 = document.getElementById("msg6");
+			var m7 = document.getElementById("msg7");
+			var m8 = document.getElementById("msg8");
+			var m9 = document.getElementById("msg9");
+			var m10 = document.getElementById("msg10");
+			var nmvalidate = /[a-zA-Z0-9]{5,}/; // = new RegExp('[a-zA-Z0-9]{5,}');
+			var emvalidate = /([a-zA-Z0-9\.-]+)@([a-zA-Z]+).([a-z]{2,8})(.[a-z]{2,8})?/;
+			var pnmvalidate = /(0|91)?[7-9][0-9]{9}/;
+			var passvalidate = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!$^&#@()-*%]).{8,}/;
+			if( x.value == ""){
+				m1.style.display="none";
+				m2.style.display="block";
+				x.style.border="1px solid red";
+			}
+			else if(!nmvalidate.test(x.value)){
+				m2.style.display="none";
+				m1.style.display="block";	
+				x.style.border="1px solid red";
+			}
+			else{
+				m1.style.display="none";
+				m2.style.display="none";
+				x.style="default";
+			}
+			if(y.value == ""){
+				m3.style.display="none";
+				m4.style.display="block";
+				y.style.border="1px solid red";
+			}
+			else if(!emvalidate.test(y.value)){
+				m4.style.display="none";
+				m3.style.display="block";
+				y.style.border="1px solid red";
+			}
+			else{
+				m4.style.display="none";
+				m3.style.display="none";
+				y.style="default";
+			}
+			if( z.value == ""){
+				m5.style.display="none";
+				m6.style.display="block";
+				z.style.border="1px solid red";
+			}
+			else if(!pnmvalidate.test(z.value)){
+				m6.style.display="none";
+				m5.style.display="block";	
+				z.style.border="1px solid red";
+			}
+			else{
+				m5.style.display="none";
+				m6.style.display="none";
+				z.style="default";
+			}
+			if(ps1.value==""){
+				m7.style.display="none";
+				m8.style.display="block";
+				ps1.style.border="1px solid red";
+			}
+			else if(!passvalidate.test(ps1.value)){
+				m8.style.display="none";
+				m7.style.display="block";
+				ps1.style.border="1px solid red";
+			}
+			else{
+				m7.style.display="none";
+				m8.style.display="none";
+				ps1.style="default";
+			}
+			if(ps2.value==""){
+				m9.style.display="none";
+				m10.style.display="block";
+				ps2.style.border="1px solid red";
+			}
+			else if(ps2.value!=ps1.value){
+				m10.style.display="none";
+				m9.style.display="block";
+				ps2.style.border="1px solid red";
+			}
+			else{
+				m10.style.display="none";
+				m9.style.display="none";
+				ps2.style="default";
+			}
+		}
+	</script>
+</body>
+</html>
